@@ -4,28 +4,21 @@ def check_sudoku(sudo):
     columns = len(sudo)
     print(sudo)
     for i in sudo:
-       # print(len(i))
-        #print(i)
         if len(i) != columns :
             print ("Matrix is not square")
             return False
-        for n in i:
-            if type(n) != int: 
+        for num in i:
+            if type(num) != int: 
                 print(" Matrix not contain Integers")
                 return False
      
-    # Checking numbers in order per line
+    # Checking numbers in order per row
     
-    for i in sudo:
-      #print(i)
-      #print(a)
+    for each_row in sudo:
       a = list(range(1,columns+1))
-      for n in i:
-          if n in a:
-              #print(n)
-              #print(a)
-              #print(a.index(n))
-              a.pop(a.index(n))
+      for digit in each_row:
+          if digit in a:
+             a.pop(a.index(digit))
           else:
               print(" Sudoku is not Correct ") 
               return False
@@ -40,13 +33,10 @@ def check_sudoku(sudo):
         while num != columns-1:
             
             if sudo[num][num2] in a:
-                #print(num, num2)
-
-                #print(sudo[num][num2])
+                
                 a.pop(a.index(sudo[num][num2]))
-                #print(a)
                 num += 1
-                #print(num)
+                
             else:
                 print(" Sudoku is not Correct ") 
                 return False
